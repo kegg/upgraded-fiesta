@@ -20,7 +20,7 @@ public class Player extends Entity {
     y += velY;
 
     x = Utils.clamp(x, 0, Life.WIDTH - 32);
-    y = Utils.clamp(y, 0, Life.HEIGHT - 32);
+    y = Utils.clamp(y, 0, Life.HEIGHT - 61);
   }
 
   @Override
