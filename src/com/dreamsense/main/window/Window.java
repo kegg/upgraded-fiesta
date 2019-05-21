@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * @author kyle.eggleston
  */
-public class Window extends Canvas {
+public class Window {
 
   public Window(int width, int height, String title, Life life) {
 
