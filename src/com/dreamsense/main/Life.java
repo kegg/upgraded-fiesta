@@ -47,6 +47,8 @@ public class Life extends JPanel implements Runnable {
   public void run() {
     this.requestFocus();
 
+    int delay = 17;
+    long sleep, timeDiff;
     long lastTime = System.nanoTime();
     double amountOfTicks = 60.0;
     double ns = 1000000000 / amountOfTicks;
@@ -59,6 +61,19 @@ public class Life extends JPanel implements Runnable {
       delta += (now - lastTime) / ns;
       lastTime = now;
 
+      timeDiff = System.currentTimeMillis();
+      sleep = delay - timeDiff;
+      
+      if (sleep < 0) {
+        sleep = 2;
+      }
+  
+      try {
+        Thread.sleep(sleep);
+      } catch (InterruptedException e) {
+        System.out.println("interrupted");
+      }
+      
       while(delta >= 1) {
         tick();
         delta--;
