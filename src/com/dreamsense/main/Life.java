@@ -8,7 +8,6 @@ import com.dreamsense.main.window.Window;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 
 /**
  * @author kyle.eggleston
