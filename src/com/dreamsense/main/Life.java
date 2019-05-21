@@ -6,15 +6,14 @@ import com.dreamsense.main.entities.KeyInput;
 import com.dreamsense.main.entities.Player;
 import com.dreamsense.main.window.Window;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 /**
  * @author kyle.eggleston
  */
-public class Life extends Canvas implements Runnable {
+public class Life extends JPanel implements Runnable {
 
   public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
   private Thread thread;
@@ -67,7 +66,7 @@ public class Life extends Canvas implements Runnable {
       }
 
       if(running)
-        render();
+        repaint();
 
       frames++;
 
@@ -81,21 +80,16 @@ public class Life extends Canvas implements Runnable {
     stop();
   }
 
-  private void render() {
-    BufferStrategy bs = this.getBufferStrategy();
-    if (bs == null) {
-      this.createBufferStrategy(3);
-      return;
-    }
-
-    Graphics g = bs.getDrawGraphics();
+  @Override
+  public void paintComponent(Graphics g) {
+    super.paintComponent(g);
 
     g.setColor(Color.black);
     g.fillRect(0, 0, WIDTH, HEIGHT);
 
     handler.render(g);
-
-    bs.show();
+  
+    Toolkit.getDefaultToolkit().sync();
     g.dispose();
   }
 
