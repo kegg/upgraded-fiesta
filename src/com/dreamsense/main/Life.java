@@ -4,6 +4,7 @@ import com.dreamsense.main.entities.EntityId;
 import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.KeyInput;
 import com.dreamsense.main.entities.Player;
+import com.dreamsense.main.window.Hud;
 import com.dreamsense.main.window.Window;
 
 import javax.swing.*;
@@ -19,8 +20,10 @@ public class Life extends JPanel implements Runnable {
   private boolean running = false;
 
   private Handler handler;
+  private Hud hud;
 
   public Life() {
+    hud = new Hud();
     handler = new Handler();
     this.addKeyListener(new KeyInput(handler));
     new Window(WIDTH, HEIGHT, "Fluffles Revenge", this);
@@ -102,12 +105,14 @@ public class Life extends JPanel implements Runnable {
     g.fillRect(0, 0, WIDTH, HEIGHT);
 
     handler.render(g);
+    hud.render(g);
   
     Toolkit.getDefaultToolkit().sync();
     g.dispose();
   }
 
   private void tick() {
+    hud.tick();
     handler.tick();
   }
 
