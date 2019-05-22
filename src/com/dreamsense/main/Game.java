@@ -4,6 +4,7 @@ import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.KeyInput;
 import com.dreamsense.main.window.Hud;
 import com.dreamsense.main.window.Menu;
+import com.dreamsense.main.window.Spawn;
 import com.dreamsense.main.window.Texture;
 import com.dreamsense.main.window.Window;
 
@@ -25,6 +26,7 @@ public class Game extends JPanel implements Runnable {
 
   private Handler handler;
   private Hud hud;
+  private Spawn spawner;
   private Menu menu;
   
   public enum GameState {
@@ -44,6 +46,7 @@ public class Game extends JPanel implements Runnable {
     this.addKeyListener(new KeyInput(handler, hud));
     this.addMouseListener(menu);
     new Window(WIDTH, HEIGHT, "Fluffles Revenge", this);
+    spawner = new Spawn(handler, hud, this);
   }
 
   public synchronized void start() {
@@ -154,6 +157,12 @@ public class Game extends JPanel implements Runnable {
       if (!paused) {
         hud.tick();
         handler.tick();
+        spawner.tick();
+        
+        if (hud.getHealth() < 0) {
+          handler.clearEntities();
+          currentGameState = GameState.END;
+        }
       }
     }
   }

@@ -5,6 +5,7 @@ import com.dreamsense.main.window.Hud;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 /**
  * @author kyle.eggleston
@@ -14,10 +15,12 @@ public class KeyInput extends KeyAdapter {
   private Handler handler;
   private Hud hud;
   private boolean[] keyDown = new boolean[4];
+  private Random r;
 
   public KeyInput(Handler handler, Hud hud) {
     this.handler = handler;
     this.hud = hud;
+    r = new Random();
 
     keyDown[0]=false;
     keyDown[1]=false;
@@ -69,6 +72,10 @@ public class KeyInput extends KeyAdapter {
         handler.clearEntities();
         hud.resetLevel();
         Game.currentGameState = Game.GameState.MENU;
+      }
+      
+      if (key == KeyEvent.VK_E) {
+        handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
       }
     }
   }

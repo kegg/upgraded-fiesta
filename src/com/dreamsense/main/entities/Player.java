@@ -41,6 +41,8 @@ public class Player extends Entity {
         if (entity.getEntityId() == EntityId.GoldCoin) {
           hud.setCoins(hud.getCoins() + 1);
           handler.removeEntity(entity);
+        } else if (entity.getEntityId() == EntityId.SmartEnemy) {
+          hud.setHealth(hud.getHealth() - 2);
         }
       }
     }

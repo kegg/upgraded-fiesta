@@ -79,6 +79,12 @@ public class Menu extends MouseAdapter implements Screen {
       if (mouseOver(mx, my, (Game.WIDTH - 200) / 2, 350, 200, 64)) {
         Game.currentGameState = Game.GameState.HELP;
       }
+    } else if (Game.currentGameState == Game.GameState.END) {
+      // try again
+      if (mouseOver(mx, my, (Game.WIDTH - 200) / 2, 350, 200, 64)) {
+        hud.resetLevel();
+        Game.currentGameState = Game.GameState.MENU;
+      }
     }
   }
   
@@ -167,6 +173,18 @@ public class Menu extends MouseAdapter implements Screen {
       g.setColor(Color.white);
       g.drawRect((Game.WIDTH - 200) / 2, 350, 200, 64);
       Utils.drawCenteredString("Back", d.width, d.height, g, 390);
+    } else if (game.currentGameState == Game.GameState.END) {
+      g.setFont(font);
+      g.setColor(Color.white);
+      Utils.drawCenteredString("GAME OVER", d.width, d.height, g, 70);
+  
+      g.setFont(font3);
+      Utils.drawCenteredString("You lost with a score of: " + hud.getScore(), d.width, d.height, g, 200);
+  
+      g.setFont(font2);
+      g.setColor(Color.white);
+      g.drawRect((Game.WIDTH - 200) / 2, 350, 200, 64);
+      Utils.drawCenteredString("Try Again", d.width, d.height, g, 390);
     }
   }
 }
