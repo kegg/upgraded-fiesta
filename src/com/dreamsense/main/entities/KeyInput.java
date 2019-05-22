@@ -57,7 +57,12 @@ public class KeyInput extends KeyAdapter {
       }
     }
 
-    if (key == KeyEvent.VK_Q) System.exit(0);
+    if (key == KeyEvent.VK_Q) {
+      if (e.isControlDown()) {
+        System.exit(0);
+      }
+      
+    }
     
     if (Game.currentGameState == Game.GameState.GAME) {
       if (key == KeyEvent.VK_P) {
