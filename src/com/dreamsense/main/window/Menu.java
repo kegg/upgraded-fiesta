@@ -2,6 +2,9 @@ package com.dreamsense.main.window;
 
 import com.dreamsense.main.Game;
 import com.dreamsense.main.Utils;
+import com.dreamsense.main.entities.EntityId;
+import com.dreamsense.main.entities.Handler;
+import com.dreamsense.main.entities.Player;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -13,9 +16,11 @@ import java.awt.event.MouseEvent;
 public class Menu extends MouseAdapter implements Screen {
 
   private Game game;
+  private Handler handler;
   
-  public Menu(Game game) {
+  public Menu(Game game, Handler handler) {
     this.game = game;
+    this.handler = handler;
   }
   
   public void mousePressed(MouseEvent e) {
@@ -26,6 +31,7 @@ public class Menu extends MouseAdapter implements Screen {
       // play
       if (mouseOver(mx, my, (Game.WIDTH - 200) / 2, 150, 200, 64)) {
         Game.currentGameState = Game.GameState.GAME;
+        handler.addEntity(new Player(100, 100, EntityId.Player));
       }
   
       // help

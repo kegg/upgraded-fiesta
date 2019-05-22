@@ -1,9 +1,7 @@
 package com.dreamsense.main;
 
-import com.dreamsense.main.entities.EntityId;
 import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.KeyInput;
-import com.dreamsense.main.entities.Player;
 import com.dreamsense.main.window.Hud;
 import com.dreamsense.main.window.Menu;
 import com.dreamsense.main.window.Window;
@@ -18,7 +16,7 @@ import java.awt.Toolkit;
  */
 public class Game extends JPanel implements Runnable {
 
-  public static final int WIDTH = 800, HEIGHT = WIDTH / 12 * 9;
+  public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
   private Thread thread;
   private boolean running = false;
 
@@ -35,13 +33,12 @@ public class Game extends JPanel implements Runnable {
   public static GameState currentGameState = GameState.MENU;
 
   public Game() {
-    menu = new Menu(this);
-    hud = new Hud();
     handler = new Handler();
+    menu = new Menu(this, handler);
+    hud = new Hud();
     this.addKeyListener(new KeyInput(handler));
     this.addMouseListener(menu);
     new Window(WIDTH, HEIGHT, "Fluffles Revenge", this);
-    handler.addEntity(new Player(100, 100, EntityId.Player));
   }
 
   public synchronized void start() {
@@ -117,15 +114,15 @@ public class Game extends JPanel implements Runnable {
 
     g.setColor(Color.black);
     g.fillRect(0, 0, WIDTH, HEIGHT);
-
+  
+    handler.render(g);
+    
     if (currentGameState == GameState.GAME) {
-      handler.render(g);
       hud.render(g);
     } else {
       menu.render(g);
     }
-
-  
+    
     Toolkit.getDefaultToolkit().sync();
     g.dispose();
   }
