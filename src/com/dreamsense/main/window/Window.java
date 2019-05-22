@@ -1,6 +1,7 @@
 package com.dreamsense.main.window;
 
 import com.dreamsense.main.Game;
+import com.dreamsense.main.splash.SplashScreenDriver;
 
 import javax.swing.*;
 import java.awt.*;

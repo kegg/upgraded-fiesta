@@ -1,4 +1,6 @@
-package com.dreamsense.main.window;
+package com.dreamsense.main.splash;
+
+import com.dreamsense.main.window.Texture;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +9,7 @@ import java.awt.*;
  * Created by kegg on 2019-05-21 at 17:34.
  * Project: upgraded-fiesta
  */
-public class SplashScreen extends JWindow {
+class SplashScreen extends JWindow {
 
   private BorderLayout borderLayout;
   private JLabel imageLabel;
@@ -16,7 +18,7 @@ public class SplashScreen extends JWindow {
   private JProgressBar progressBar;
   private ImageIcon imageIcon;
   
-  public SplashScreen(Texture texture) {
+  SplashScreen(Texture texture) {
     this.imageIcon = new ImageIcon(texture.getImage());
     borderLayout = new BorderLayout();
     imageLabel = new JLabel();
@@ -25,14 +27,10 @@ public class SplashScreen extends JWindow {
     progressBar = new JProgressBar();
     progressBar.setStringPainted(true);
     
-    try {
-      init();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    init();
   }
   
-  private void init() throws Exception {
+  private void init() {
     imageLabel.setIcon(imageIcon);
     getContentPane().setLayout(borderLayout);
     southPanel.setLayout(southFlow);
@@ -43,20 +41,16 @@ public class SplashScreen extends JWindow {
     pack();
   }
   
-  public void setMaxProgress(int maxProgress) {
+  void setMaxProgress(int maxProgress) {
     progressBar.setMaximum(maxProgress);
   }
   
-  public void setProgress(int progress) {
+  void setProgress(int progress) {
     float percentage = ((float)progress / (float)progressBar.getMaximum()) * 100;
     
-    SwingUtilities.invokeLater(new Runnable() {
-  
-      @Override
-      public void run() {
-        progressBar.setValue(progress);
-        progressBar.setString(String.format("Loading " + (int)percentage) + "%");
-      }
+    SwingUtilities.invokeLater(() -> {
+      progressBar.setValue(progress);
+      progressBar.setString("Loading " + (int)percentage + "%");
     });
   }
 }
