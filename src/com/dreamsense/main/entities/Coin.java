@@ -1,7 +1,5 @@
 package com.dreamsense.main.entities;
 
-import com.dreamsense.main.Game;
-
 import java.awt.*;
 
 /**
