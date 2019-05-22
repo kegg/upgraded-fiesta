@@ -28,7 +28,8 @@ public class Game extends JPanel implements Runnable {
   public enum GameState {
     GAME,
     MENU,
-    END
+    HELP,
+    END;
   }
   
   public static GameState currentGameState = GameState.MENU;
