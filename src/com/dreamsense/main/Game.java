@@ -19,6 +19,7 @@ public class Game extends JPanel implements Runnable {
   public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
   private Thread thread;
   private boolean running = false;
+  public static boolean paused = false;
 
   private Handler handler;
   private Hud hud;
@@ -58,6 +59,8 @@ public class Game extends JPanel implements Runnable {
     }
   }
 
+  public static int currentFrames = 0;
+  
   public void run() {
     this.requestFocus();
 
@@ -101,6 +104,7 @@ public class Game extends JPanel implements Runnable {
       if(System.currentTimeMillis() - timer > 1000) {
         timer += 1000;
         System.out.println("FPS: " + frames);
+        currentFrames = frames;
         frames = 0;
       }
     }
@@ -116,6 +120,11 @@ public class Game extends JPanel implements Runnable {
     g.fillRect(0, 0, WIDTH, HEIGHT);
   
     handler.render(g);
+  
+    if (paused) {
+      g.setColor(Color.white);
+      g.drawString("PAUSED", 15, 96);
+    }
     
     if (currentGameState == GameState.GAME) {
       hud.render(g);
@@ -128,8 +137,12 @@ public class Game extends JPanel implements Runnable {
   }
 
   private void tick() {
-    hud.tick();
-    handler.tick();
+    if (currentGameState == GameState.GAME) {
+      if (!paused) {
+        hud.tick();
+        handler.tick();
+      }
+    }
   }
 
   public static void main(String[] args) {

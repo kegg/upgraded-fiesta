@@ -1,5 +1,6 @@
 package com.dreamsense.main.window;
 
+import com.dreamsense.main.Game;
 import com.dreamsense.main.Utils;
 
 import java.awt.*;
@@ -35,7 +36,8 @@ public class Hud {
     
     g.drawString("Score: " + score, 15, 64);
     g.drawString("Level: " + level, 15, 80);
-    g.drawString("Health: " + HEALTH, 15, 96);
+    //g.drawString("Health: " + HEALTH, 15, 96);
+    g.drawString("FPS: " + Game.currentFrames, 15, 112);
   }
   
   public void setScore(int score) {
