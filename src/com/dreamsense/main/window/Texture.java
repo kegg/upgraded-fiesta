@@ -3,7 +3,6 @@ package com.dreamsense.main.window;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +26,7 @@ public class Texture {
       this.image = oldTexture;
     } else {
       try {
-        this.image = ImageIO.read(new File("./resources/textures/" + fileName + ".png"));
+        this.image = ImageIO.read(getClass().getResourceAsStream("/textures/" + fileName + ".png"));
       } catch (IOException e) {
         e.printStackTrace();
       }
