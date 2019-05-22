@@ -33,5 +33,8 @@ public class Handler {
   public LinkedList<Entity> getEntities() {
     return entities;
   }
-
+  
+  public void clearEntities() {
+    entities.clear();
+  }
 }

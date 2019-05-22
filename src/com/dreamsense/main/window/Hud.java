@@ -53,5 +53,14 @@ public class Hud {
   public int getLevel() {
     return level;
   }
-
+  
+  public void setHealth(int health) {
+    HEALTH = health;
+  }
+  
+  public void resetLevel() {
+    setLevel(1);
+    setScore(0);
+    setHealth(100);
+  }
 }

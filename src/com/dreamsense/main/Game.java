@@ -36,7 +36,7 @@ public class Game extends JPanel implements Runnable {
     handler = new Handler();
     menu = new Menu(this, handler);
     hud = new Hud();
-    this.addKeyListener(new KeyInput(handler));
+    this.addKeyListener(new KeyInput(handler, hud));
     this.addMouseListener(menu);
     new Window(WIDTH, HEIGHT, "Fluffles Revenge", this);
   }

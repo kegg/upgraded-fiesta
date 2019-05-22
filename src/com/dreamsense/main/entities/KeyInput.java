@@ -1,5 +1,8 @@
 package com.dreamsense.main.entities;
 
+import com.dreamsense.main.Game;
+import com.dreamsense.main.window.Hud;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -9,10 +12,12 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter {
 
   private Handler handler;
+  private Hud hud;
   private boolean[] keyDown = new boolean[4];
 
-  public KeyInput(Handler handler) {
+  public KeyInput(Handler handler, Hud hud) {
     this.handler = handler;
+    this.hud = hud;
 
     keyDown[0]=false;
     keyDown[1]=false;
@@ -50,6 +55,14 @@ public class KeyInput extends KeyAdapter {
     }
 
     if (key == KeyEvent.VK_Q) System.exit(0);
+
+    if (Game.currentGameState == Game.GameState.GAME) {
+      if (key == KeyEvent.VK_M) {
+        handler.clearEntities();
+        hud.resetLevel();
+        Game.currentGameState = Game.GameState.MENU;
+      }
+    }
   }
 
   @Override
