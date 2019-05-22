@@ -6,6 +6,7 @@ import com.dreamsense.main.entities.Coin;
 import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.SmartEnemy;
 
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -36,24 +37,31 @@ public class Spawn {
       if (hud.getLevel() == 2) {
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
         
-        for (int i = 0; i < 20; i++) {
-          handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.BronzeCoin, handler, Game.bronzeCoin));
-        }
+        addCoins(EntityId.BronzeCoin, Game.bronzeCoin);
+        addCoins(EntityId.SilverCoin, Game.silverCoin);
+        addCoins(EntityId.GoldCoin, Game.goldCoin);
       } else if (hud.getLevel() == 3) {
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
   
-        for (int i = 0; i < 20; i++) {
-          handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SilverCoin, handler, Game.silverCoin));
-        }
+        addCoins(EntityId.BronzeCoin, Game.bronzeCoin);
+        addCoins(EntityId.SilverCoin, Game.silverCoin);
+        addCoins(EntityId.GoldCoin, Game.goldCoin);
       }  else if (hud.getLevel() == 4) {
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
   
-        for (int i = 0; i < 20; i++) {
-          handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.GoldCoin, handler, Game.goldCoin));
-        }
+        addCoins(EntityId.BronzeCoin, Game.bronzeCoin);
+        addCoins(EntityId.SilverCoin, Game.silverCoin);
+        addCoins(EntityId.GoldCoin, Game.goldCoin);
       }
+    }
+  }
+  
+  private void addCoins(EntityId entityId, Image coinType) {
+    
+    for (int i = 0; i < 5; i++) {
+      handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), entityId, handler, coinType));
     }
   }
 }
