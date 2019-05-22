@@ -2,7 +2,7 @@ package com.dreamsense.main.window;
 
 import com.dreamsense.main.Game;
 import com.dreamsense.main.entities.EntityId;
-import com.dreamsense.main.entities.GoldCoin;
+import com.dreamsense.main.entities.Coin;
 import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.SmartEnemy;
 
@@ -37,14 +37,21 @@ public class Spawn {
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
         
         for (int i = 0; i < 20; i++) {
-          handler.addEntity(new GoldCoin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.GoldCoin, handler));
+          handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.BronzeCoin, handler, Game.bronzeCoin));
         }
       } else if (hud.getLevel() == 3) {
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
         handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
   
         for (int i = 0; i < 20; i++) {
-          handler.addEntity(new GoldCoin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.GoldCoin, handler));
+          handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SilverCoin, handler, Game.silverCoin));
+        }
+      }  else if (hud.getLevel() == 4) {
+        handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
+        handler.addEntity(new SmartEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.SmartEnemy, handler));
+  
+        for (int i = 0; i < 20; i++) {
+          handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.GoldCoin, handler, Game.goldCoin));
         }
       }
     }

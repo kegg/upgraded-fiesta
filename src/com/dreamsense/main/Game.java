@@ -23,6 +23,8 @@ public class Game extends JPanel implements Runnable {
   
   public static Image fluffles;
   public static Image goldCoin;
+  public static Image bronzeCoin;
+  public static Image silverCoin;
 
   private Handler handler;
   private Hud hud;
@@ -74,6 +76,12 @@ public class Game extends JPanel implements Runnable {
     
     tex = new Texture("gold_coin");
     goldCoin = tex.getImage();
+    
+    tex = new Texture("bronze_coin");
+    bronzeCoin = tex.getImage();
+    
+    tex = new Texture("silver_coin");
+    silverCoin = tex.getImage();
   }
   
   public void run() {

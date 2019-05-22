@@ -8,13 +8,15 @@ import java.awt.*;
  * Created by kegg on 2019-05-21 at 20:22.
  * Project: upgraded-fiesta
  */
-public class GoldCoin extends Entity {
+public class Coin extends Entity {
   
   private Handler handler;
+  private Image coinImage;
   
-  public GoldCoin(float x, float y, EntityId entityId, Handler handler) {
+  public Coin(float x, float y, EntityId entityId, Handler handler, Image coinImage) {
     super(x, y, entityId);
     this.handler = handler;
+    this.coinImage = coinImage;
   }
   
   @Override
@@ -24,7 +26,7 @@ public class GoldCoin extends Entity {
   
   @Override
   public void render(Graphics g) {
-    g.drawImage(Game.goldCoin, (int)x, (int)y, null);
+    g.drawImage(coinImage, (int)x, (int)y, null);
   }
   
   @Override

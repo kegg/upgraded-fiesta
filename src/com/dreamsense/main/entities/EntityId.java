@@ -3,5 +3,7 @@ package com.dreamsense.main.entities;
 public enum EntityId {
   Player(),
   SmartEnemy(),
-  GoldCoin();
+  GoldCoin(),
+  BronzeCoin(),
+  SilverCoin();
 }

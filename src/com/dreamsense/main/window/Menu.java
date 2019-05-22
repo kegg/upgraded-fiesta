@@ -3,7 +3,7 @@ package com.dreamsense.main.window;
 import com.dreamsense.main.Game;
 import com.dreamsense.main.Utils;
 import com.dreamsense.main.entities.EntityId;
-import com.dreamsense.main.entities.GoldCoin;
+import com.dreamsense.main.entities.Coin;
 import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.Player;
 
@@ -45,7 +45,7 @@ public class Menu extends MouseAdapter implements Screen {
         handler.addEntity(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, EntityId.Player, handler, hud));
         
         for (int i = 0; i < 20; i++) {
-          handler.addEntity(new GoldCoin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.GoldCoin, handler));
+          handler.addEntity(new Coin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.BronzeCoin, handler, Game.bronzeCoin));
         }
       }
   

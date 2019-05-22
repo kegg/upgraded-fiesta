@@ -39,6 +39,12 @@ public class Player extends Entity {
       
       if (getBounds().intersects(entity.getBounds())) {
         if (entity.getEntityId() == EntityId.GoldCoin) {
+          hud.setCoins(hud.getCoins() + 3);
+          handler.removeEntity(entity);
+        } else if (entity.getEntityId() == EntityId.SilverCoin) {
+          hud.setCoins(hud.getCoins() + 2);
+          handler.removeEntity(entity);
+        } else if (entity.getEntityId() == EntityId.BronzeCoin) {
           hud.setCoins(hud.getCoins() + 1);
           handler.removeEntity(entity);
         } else if (entity.getEntityId() == EntityId.SmartEnemy) {
