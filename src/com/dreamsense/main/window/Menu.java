@@ -145,7 +145,7 @@ public class Menu extends MouseAdapter implements Screen {
       
       g.setFont(font4);
       g.setColor(Color.gray);
-      g.drawString("Version 0.0a", 10, 450);
+      g.drawString("Version 0.1a", 10, 450);
     } else if (game.currentGameState == Game.GameState.HELP) {
       g.setFont(font);
       g.setColor(Color.white);
