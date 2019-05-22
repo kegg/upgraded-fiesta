@@ -37,7 +37,7 @@ public class Hud {
     
     g.drawString("Score: " + getScore(), 15, 64);
     g.drawString("Level: " + getLevel(), 15, 80);
-    g.drawString("Health: " + getHealth(), 15, 96);
+    //g.drawString("Health: " + getHealth(), 15, 96);
     g.drawString("Coins: " + getCoins(), 15, 112);
     g.drawString("FPS: " + Game.currentFrames, 15, 128);
   }
