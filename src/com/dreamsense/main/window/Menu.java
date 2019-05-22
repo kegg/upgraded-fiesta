@@ -117,6 +117,14 @@ public class Menu extends MouseAdapter implements Screen {
     Font font4 = new Font("arial", Font.BOLD, 10);
     Dimension d = new Dimension(Game.WIDTH, Game.HEIGHT);
   
+    if (g instanceof Graphics2D) {
+      Graphics2D g2d = (Graphics2D) g;
+      RenderingHints rh = new RenderingHints(
+          RenderingHints.KEY_TEXT_ANTIALIASING,
+          RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+      g2d.setRenderingHints(rh);
+    }
+    
     if (game.currentGameState == Game.GameState.MENU) {
       g.setFont(font);
       g.setColor(Color.white);
