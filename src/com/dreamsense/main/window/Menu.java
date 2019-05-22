@@ -180,7 +180,9 @@ public class Menu extends MouseAdapter implements Screen {
   
       g.setFont(font3);
       Utils.drawCenteredString("You lost with a score of: " + hud.getScore(), d.width, d.height, g, 200);
-  
+      Utils.drawCenteredString("Coins: " + hud.getCoins(), d.width, d.height, g, 230);
+      Utils.drawCenteredString("Level: " + hud.getLevel(), d.width, d.height, g, 260);
+      
       g.setFont(font2);
       g.setColor(Color.white);
       g.drawRect((Game.WIDTH - 200) / 2, 350, 200, 64);
