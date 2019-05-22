@@ -36,7 +36,7 @@ public class Game extends JPanel implements Runnable {
   
   public static GameState currentGameState = GameState.MENU;
 
-  public Game() {
+  private Game() {
     handler = new Handler();
     hud = new Hud();
     menu = new Menu(this, handler, hud);

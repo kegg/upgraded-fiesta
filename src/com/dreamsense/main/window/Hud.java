@@ -11,9 +11,8 @@ import java.awt.*;
  */
 public class Hud {
   
-  public static int HEALTH = 100;
+  private int HEALTH = 100;
   private int greenValue = 0;
-  private int redValue = 150;
   private int blueValue = 255 * HEALTH / 100;
   private int score = 0;
   private int level = 1;
@@ -30,6 +29,7 @@ public class Hud {
   public void render(Graphics g) {
     g.setColor(Color.gray);
     g.fillRect(15, 15, 200, 32);
+    int redValue = 150;
     g.setColor(new Color(redValue, greenValue, blueValue));
     g.fillRect(15, 15, HEALTH * 2, 32);
     g.setColor(Color.white);
@@ -42,23 +42,23 @@ public class Hud {
     g.drawString("FPS: " + Game.currentFrames, 15, 128);
   }
   
-  public void setScore(int score) {
+  private void setScore(int score) {
     this.score = score;
   }
   
-  public int getScore() {
+  private int getScore() {
     return score;
   }
   
-  public void setLevel(int level) {
+  private void setLevel(int level) {
     this.level = level;
   }
   
-  public int getLevel() {
+  private int getLevel() {
     return level;
   }
   
-  public void setHealth(int health) {
+  private void setHealth(int health) {
     HEALTH = health;
   }
   
@@ -73,6 +73,7 @@ public class Hud {
   public void resetLevel() {
     setLevel(1);
     setScore(0);
+    setCoins(0);
     setHealth(100);
   }
 }
