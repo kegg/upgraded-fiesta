@@ -31,7 +31,7 @@ public class Menu extends MouseAdapter implements Screen {
       // play
       if (mouseOver(mx, my, (Game.WIDTH - 200) / 2, 150, 200, 64)) {
         Game.currentGameState = Game.GameState.GAME;
-        handler.addEntity(new Player(100, 100, EntityId.Player));
+        handler.addEntity(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, EntityId.Player));
       }
   
       // help

@@ -2,6 +2,7 @@ package com.dreamsense.main.entities;
 
 import com.dreamsense.main.Game;
 import com.dreamsense.main.Utils;
+import com.dreamsense.main.window.Texture;
 
 import java.awt.*;
 
@@ -10,8 +11,13 @@ import java.awt.*;
  */
 public class Player extends Entity {
 
+  private Texture tex;
+  private Image image;
+  
   public Player(float x, float y, EntityId entityId) {
     super(x, y, entityId);
+    tex = new Texture("fluffles");
+    image = tex.getImage();
   }
 
   @Override
@@ -21,11 +27,12 @@ public class Player extends Entity {
 
     x = Utils.clamp(x, 0, Game.WIDTH - 32);
     y = Utils.clamp(y, 0, Game.HEIGHT - 61);
+    
   }
 
   @Override
   public void render(Graphics g) {
     g.setColor(Color.white);
-    g.fillRect((int)getX(), (int)getY(), 32, 32);
+    g.drawImage(image, (int)x, (int)y, null);
   }
 }
