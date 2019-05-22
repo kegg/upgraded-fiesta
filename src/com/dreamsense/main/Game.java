@@ -5,27 +5,41 @@ import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.KeyInput;
 import com.dreamsense.main.entities.Player;
 import com.dreamsense.main.window.Hud;
+import com.dreamsense.main.window.Menu;
 import com.dreamsense.main.window.Window;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Toolkit;
 
 /**
  * @author kyle.eggleston
  */
 public class Game extends JPanel implements Runnable {
 
-  public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
+  public static final int WIDTH = 800, HEIGHT = WIDTH / 12 * 9;
   private Thread thread;
   private boolean running = false;
 
   private Handler handler;
   private Hud hud;
+  private Menu menu;
+  
+  public enum GameState {
+    GAME,
+    MENU,
+    END
+  }
+  
+  public static GameState currentGameState = GameState.MENU;
 
   public Game() {
+    menu = new Menu(this);
     hud = new Hud();
     handler = new Handler();
     this.addKeyListener(new KeyInput(handler));
+    this.addMouseListener(menu);
     new Window(WIDTH, HEIGHT, "Fluffles Revenge", this);
     handler.addEntity(new Player(100, 100, EntityId.Player));
   }
@@ -38,7 +52,7 @@ public class Game extends JPanel implements Runnable {
     running = true;
   }
 
-  public synchronized void stop() {
+  private synchronized void stop() {
     try {
       thread.join();
       running = false;
@@ -104,8 +118,13 @@ public class Game extends JPanel implements Runnable {
     g.setColor(Color.black);
     g.fillRect(0, 0, WIDTH, HEIGHT);
 
-    handler.render(g);
-    hud.render(g);
+    if (currentGameState == GameState.GAME) {
+      handler.render(g);
+      hud.render(g);
+    } else {
+      menu.render(g);
+    }
+
   
     Toolkit.getDefaultToolkit().sync();
     g.dispose();
@@ -114,16 +133,6 @@ public class Game extends JPanel implements Runnable {
   private void tick() {
     hud.tick();
     handler.tick();
-  }
-
-  public static int clamp(int var, int min, int max) {
-    if (var >= max) {
-      return var = max;
-    } else if (var <= min) {
-      return var = min;
-    } else {
-      return var;
-    }
   }
 
   public static void main(String[] args) {
