@@ -13,7 +13,7 @@ import java.awt.*;
 /**
  * @author kyle.eggleston
  */
-public class Life extends JPanel implements Runnable {
+public class Game extends JPanel implements Runnable {
 
   public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
   private Thread thread;
@@ -22,7 +22,7 @@ public class Life extends JPanel implements Runnable {
   private Handler handler;
   private Hud hud;
 
-  public Life() {
+  public Game() {
     hud = new Hud();
     handler = new Handler();
     this.addKeyListener(new KeyInput(handler));
@@ -127,6 +127,6 @@ public class Life extends JPanel implements Runnable {
   }
 
   public static void main(String[] args) {
-    new Life();
+    new Game();
   }
 }

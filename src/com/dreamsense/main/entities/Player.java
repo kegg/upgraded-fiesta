@@ -1,6 +1,6 @@
 package com.dreamsense.main.entities;
 
-import com.dreamsense.main.Life;
+import com.dreamsense.main.Game;
 import com.dreamsense.main.Utils;
 
 import java.awt.*;
@@ -19,8 +19,8 @@ public class Player extends Entity {
     x += velX;
     y += velY;
 
-    x = Utils.clamp(x, 0, Life.WIDTH - 32);
-    y = Utils.clamp(y, 0, Life.HEIGHT - 61);
+    x = Utils.clamp(x, 0, Game.WIDTH - 32);
+    y = Utils.clamp(y, 0, Game.HEIGHT - 61);
   }
 
   @Override

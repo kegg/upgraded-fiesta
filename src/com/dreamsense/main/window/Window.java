@@ -1,22 +1,20 @@
 package com.dreamsense.main.window;
 
-import com.dreamsense.main.Life;
+import com.dreamsense.main.Game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 /**
  * @author kyle.eggleston
  */
 public class Window {
 
-  public Window(int width, int height, String title, Life life) {
+  public Window(int width, int height, String title, Game game) {
     new SplashScreenDriver();
     
     JFrame frame = new JFrame(title);
-    frame.add(life);
+    frame.add(game);
     
     frame.setPreferredSize(new Dimension(width, height));
     frame.setMaximumSize(new Dimension(width, height));
@@ -26,7 +24,7 @@ public class Window {
     frame.setResizable(false);
     frame.setLocationRelativeTo(null);
     frame.setVisible(true);
-    life.start();
+    game.start();
   }
 
 }
