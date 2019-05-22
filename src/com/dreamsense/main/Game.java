@@ -31,6 +31,7 @@ public class Game extends JPanel implements Runnable {
     GAME,
     MENU,
     HELP,
+    SPECIAL,
     END;
   }
   
