@@ -66,11 +66,7 @@ public class KeyInput extends KeyAdapter {
     
     if (Game.currentGameState == Game.GameState.GAME) {
       if (key == KeyEvent.VK_P) {
-        if (Game.paused) {
-          Game.paused = false;
-        } else {
-          Game.paused = true;
-        }
+        Game.paused = !Game.paused;
       }
       
       if (key == KeyEvent.VK_M) {
