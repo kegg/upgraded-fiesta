@@ -11,8 +11,9 @@ import java.awt.*;
 public class Hud {
   
   public static int HEALTH = 100;
-  private int greenValue = 255 * HEALTH / 100;
+  private int greenValue = 0;
   private int redValue = 150;
+  private int blueValue = 255 * HEALTH / 100;
   private int score = 0;
   private int level = 1;
   
@@ -27,7 +28,7 @@ public class Hud {
   public void render(Graphics g) {
     g.setColor(Color.gray);
     g.fillRect(15, 15, 200, 32);
-    g.setColor(new Color(redValue, greenValue, 0));
+    g.setColor(new Color(redValue, greenValue, blueValue));
     g.fillRect(15, 15, HEALTH * 2, 32);
     g.setColor(Color.white);
     g.drawRect(15, 15, 200, 32);
