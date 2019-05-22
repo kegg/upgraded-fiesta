@@ -17,6 +17,7 @@ public class Hud {
   private int blueValue = 255 * HEALTH / 100;
   private int score = 0;
   private int level = 1;
+  private int coins = 0;
   
   public void tick() {
     HEALTH = (int) Utils.clamp((float)HEALTH, 0, 100);
@@ -37,7 +38,8 @@ public class Hud {
     g.drawString("Score: " + getScore(), 15, 64);
     g.drawString("Level: " + getLevel(), 15, 80);
     //g.drawString("Health: " + HEALTH, 15, 96);
-    g.drawString("FPS: " + Game.currentFrames, 15, 112);
+    g.drawString("Coins: " + getCoins(), 15, 112);
+    g.drawString("FPS: " + Game.currentFrames, 15, 128);
   }
   
   public void setScore(int score) {
@@ -58,6 +60,14 @@ public class Hud {
   
   public void setHealth(int health) {
     HEALTH = health;
+  }
+  
+  public int getCoins() {
+    return coins;
+  }
+  
+  public void setCoins(int coins) {
+    this.coins = coins;
   }
   
   public void resetLevel() {

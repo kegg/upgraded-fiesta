@@ -2,6 +2,7 @@ package com.dreamsense.main.entities;
 
 import com.dreamsense.main.Game;
 import com.dreamsense.main.Utils;
+import com.dreamsense.main.window.Hud;
 
 import java.awt.*;
 
@@ -11,10 +12,12 @@ import java.awt.*;
 public class Player extends Entity {
 
   private Handler handler;
+  private Hud hud;
   
-  public Player(float x, float y, EntityId entityId, Handler handler) {
+  public Player(float x, float y, EntityId entityId, Handler handler, Hud hud) {
     super(x, y, entityId);
     this.handler = handler;
+    this.hud = hud;
   }
 
   @Override
@@ -36,6 +39,7 @@ public class Player extends Entity {
       
       if (getBounds().intersects(entity.getBounds())) {
         if (entity.getEntityId() == EntityId.GoldCoin) {
+          hud.setCoins(hud.getCoins() + 1);
           handler.removeEntity(entity);
         }
       }

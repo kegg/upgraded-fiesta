@@ -19,13 +19,15 @@ public class Menu extends MouseAdapter implements Screen {
 
   private Game game;
   private Handler handler;
+  private Hud hud;
   private Texture tex;
   private Image fluffles;
   private Random r;
   
-  public Menu(Game game, Handler handler) {
+  public Menu(Game game, Handler handler, Hud hud) {
     this.game = game;
     this.handler = handler;
+    this.hud = hud;
     tex = new Texture("fluffles");
     fluffles = tex.getImage();
     r = new Random();
@@ -39,7 +41,7 @@ public class Menu extends MouseAdapter implements Screen {
       // play
       if (mouseOver(mx, my, (Game.WIDTH - 200) / 2, 150, 200, 64)) {
         Game.currentGameState = Game.GameState.GAME;
-        handler.addEntity(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, EntityId.Player, handler));
+        handler.addEntity(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, EntityId.Player, handler, hud));
         
         for (int i = 0; i < 20; i++) {
           handler.addEntity(new GoldCoin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.GoldCoin, handler));
