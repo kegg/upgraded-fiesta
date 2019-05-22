@@ -34,8 +34,8 @@ public class Hud {
     g.setColor(Color.white);
     g.drawRect(15, 15, 200, 32);
     
-    g.drawString("Score: " + score, 15, 64);
-    g.drawString("Level: " + level, 15, 80);
+    g.drawString("Score: " + getScore(), 15, 64);
+    g.drawString("Level: " + getLevel(), 15, 80);
     //g.drawString("Health: " + HEALTH, 15, 96);
     g.drawString("FPS: " + Game.currentFrames, 15, 112);
   }

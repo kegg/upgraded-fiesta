@@ -1,5 +1,6 @@
 package com.dreamsense.main.entities;
 
 public enum EntityId {
-  Player();
+  Player(),
+  GoldCoin();
 }

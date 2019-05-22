@@ -4,12 +4,11 @@ import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.KeyInput;
 import com.dreamsense.main.window.Hud;
 import com.dreamsense.main.window.Menu;
+import com.dreamsense.main.window.Texture;
 import com.dreamsense.main.window.Window;
 
-import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author kyle.eggleston
@@ -20,6 +19,9 @@ public class Game extends JPanel implements Runnable {
   private Thread thread;
   private boolean running = false;
   public static boolean paused = false;
+  
+  public static Image fluffles;
+  public static Image goldCoin;
 
   private Handler handler;
   private Hud hud;
@@ -62,7 +64,16 @@ public class Game extends JPanel implements Runnable {
 
   public static int currentFrames = 0;
   
+  private void init() {
+    Texture tex = new Texture("fluffles");
+    fluffles = tex.getImage();
+    
+    tex = new Texture("gold_coin");
+    goldCoin = tex.getImage();
+  }
+  
   public void run() {
+    init();
     this.requestFocus();
 
     int delay = 17;

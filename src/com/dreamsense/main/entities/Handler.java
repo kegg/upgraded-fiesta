@@ -8,16 +8,18 @@ import java.util.LinkedList;
  */
 public class Handler {
 
-  private LinkedList<Entity> entities = new LinkedList<>();
+  public LinkedList<Entity> entities = new LinkedList<>();
 
   public void tick() {
-    for (Entity entity : entities) {
+    for (int i = 0; i < entities.size(); i++) {
+      Entity entity = entities.get(i);
       entity.tick();
     }
   }
 
   public void render(Graphics g) {
-    for (Entity entity : entities) {
+    for (int i = 0; i < entities.size(); i++) {
+      Entity entity = entities.get(i);
       entity.render(g);
     }
   }

@@ -3,12 +3,14 @@ package com.dreamsense.main.window;
 import com.dreamsense.main.Game;
 import com.dreamsense.main.Utils;
 import com.dreamsense.main.entities.EntityId;
+import com.dreamsense.main.entities.GoldCoin;
 import com.dreamsense.main.entities.Handler;
 import com.dreamsense.main.entities.Player;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 /**
  * @author kyle.eggleston
@@ -19,12 +21,14 @@ public class Menu extends MouseAdapter implements Screen {
   private Handler handler;
   private Texture tex;
   private Image fluffles;
+  private Random r;
   
   public Menu(Game game, Handler handler) {
     this.game = game;
     this.handler = handler;
     tex = new Texture("fluffles");
     fluffles = tex.getImage();
+    r = new Random();
   }
   
   public void mousePressed(MouseEvent e) {
@@ -35,7 +39,11 @@ public class Menu extends MouseAdapter implements Screen {
       // play
       if (mouseOver(mx, my, (Game.WIDTH - 200) / 2, 150, 200, 64)) {
         Game.currentGameState = Game.GameState.GAME;
-        handler.addEntity(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, EntityId.Player));
+        handler.addEntity(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, EntityId.Player, handler));
+        
+        for (int i = 0; i < 20; i++) {
+          handler.addEntity(new GoldCoin(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), EntityId.GoldCoin, handler));
+        }
       }
   
       // help
