@@ -43,8 +43,7 @@ public class SmartEnemy extends Entity {
   
   @Override
   public void render(Graphics g) {
-    g.setColor(Color.green);
-    g.fillRect((int)x, (int)y, 16, 16);
+    g.drawImage(Game.ghost, (int)x, (int)y, null);
   }
   
   @Override

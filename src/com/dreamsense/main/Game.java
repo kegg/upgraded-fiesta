@@ -21,6 +21,7 @@ public class Game extends JPanel implements Runnable {
   private boolean running = false;
   public static boolean paused = false;
   
+  public static Image ghost;
   public static Image fluffles;
   public static Image goldCoin;
   public static Image bronzeCoin;
@@ -73,6 +74,9 @@ public class Game extends JPanel implements Runnable {
   private void init() {
     Texture tex = new Texture("fluffles");
     fluffles = tex.getImage();
+    
+    tex = new Texture("ghost");
+    ghost = tex.getImage();
     
     tex = new Texture("gold_coin");
     goldCoin = tex.getImage();
